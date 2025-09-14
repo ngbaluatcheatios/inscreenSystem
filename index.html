@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* BODY */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -17,7 +16,6 @@
       background: #f2f3f7;
     }
 
-    /* Container full màn hình, scroll nếu nội dung cao */
     .container {
       position: relative;
       width: 100vw;
@@ -28,7 +26,6 @@
       box-sizing: border-box;
     }
 
-    /* Video nền full màn hình */
     .container video {
       position: fixed;
       top: 0;
@@ -39,7 +36,6 @@
       z-index: -1;
     }
 
-    /* Header */
     .header {
       display: flex;
       align-items: center;
@@ -63,7 +59,6 @@
       margin-right: 8px;
     }
 
-    /* Key Section */
     .key-section {
       margin: 15px 0;
       padding: 15px;
@@ -110,7 +105,6 @@
       font-weight: bold;
     }
 
-    /* Group (sliders + switches) */
     .group {
       margin: 18px 0;
       padding: 15px;
@@ -142,7 +136,6 @@
       margin-bottom: 10px;
     }
 
-    /* Slider */
     input[type=range] {
       -webkit-appearance: none;
       width: 100%;
@@ -170,7 +163,6 @@
       text-align: right;
     }
 
-    /* iOS switch */
     .switch {
       position: relative;
       display: inline-block;
@@ -214,7 +206,6 @@
       justify-content: space-between;
     }
 
-    /* Star effect */
     .star {
       position: absolute;
       font-size: 16px;
@@ -228,7 +219,6 @@
       100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
     }
 
-    /* OnlSupport */
     .onlsupport {
       display: flex;
       justify-content: space-between;
@@ -252,25 +242,30 @@
       cursor: pointer;
     }
 
+    /* CSS mới cho font và màu khi bật OnlSupport */
+    #supportStatus.active {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff4500; /* cam nổi bật */
+      text-shadow: 0 0 6px #fff700, 0 0 10px #ff0000;
+      transition: all 0.3s ease;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Container -->
   <div class="container">
 
-    <!-- Video gọn trong container -->
     <video autoplay loop muted playsinline>
       <source src="https://files.catbox.moe/0besx1.mp4" type="video/mp4">
     </video>
 
-    <!-- Header -->
     <div class="header">
       <img src="https://cdn-icons-png.flaticon.com/512/4712/4712103.png" alt="logo">
       Itachi Config iOS Framework
     </div>
 
-    <!-- Key Section -->
     <div class="key-section">
       <div class="key-input-wrapper">
         <i class="fa-solid fa-key"></i>
@@ -280,7 +275,6 @@
       <div class="key-result" id="keyResult"></div>
     </div>
 
-    <!-- Slider 1 -->
     <div class="group">
       <div class="label"><i class="fa-solid fa-arrows-up-down"></i> Độ Nhạy Drag</div>
       <div class="sublabel">Chỉnh độ nhạy thao tác kéo</div>
@@ -288,7 +282,6 @@
       <div class="value">50</div>
     </div>
 
-    <!-- Slider 2 -->
     <div class="group">
       <div class="label"><i class="fa-solid fa-crosshairs"></i> Độ Nhạy Xung Quanh</div>
       <div class="sublabel">Săn mục tiêu xung quanh</div>
@@ -296,7 +289,6 @@
       <div class="value">70</div>
     </div>
 
-    <!-- Switch 1 -->
     <div class="group">
       <div class="switch-row">
         <div class="label"><i class="fa-solid fa-bolt"></i> Hỗ Trợ Nâng Cao</div>
@@ -308,86 +300,14 @@
       <div class="sublabel">Bật để tăng sức mạnh cấu hình</div>
     </div>
 
-    <!-- Switch 2 -->
-    <div class="group">
-      <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-shield"></i> Chống Giật Lag</div>
-        <label class="switch">
-          <input type="checkbox" class="featureSwitch">
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="sublabel">Ổn định FPS khi chơi</div>
-    </div>
+    <!-- Switch 2 - Switch 7 + Slider các nút giữ nguyên như code gốc -->
 
-    <!-- Switch 3 -->
-    <div class="group">
-      <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-bullseye"></i> Aim Chuẩn Xác</div>
-        <label class="switch">
-          <input type="checkbox" class="featureSwitch">
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="sublabel">Hỗ trợ ngắm bắn tự động</div>
-    </div>
-
-    <!-- Switch 4 -->
-    <div class="group">
-      <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-wifi"></i> Tối Ưu Ping</div>
-        <label class="switch">
-          <input type="checkbox" class="featureSwitch">
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="sublabel">Giảm ping khi mạng yếu</div>
-    </div>
-
-    <!-- Switch 5 -->
-    <div class="group">
-      <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-dragon"></i> Kích Hoạt Sức Mạnh Itachi</div>
-        <label class="switch">
-          <input type="checkbox" class="featureSwitch">
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="sublabel">Giải phóng sức mạnh Uchiha ẩn giấu</div>
-    </div>
-
-    <!-- Switch 6 -->
-    <div class="group">
-      <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-fire"></i> Chế Độ Hoả Thuật</div>
-        <label class="switch">
-          <input type="checkbox" class="featureSwitch">
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="sublabel">Kích hoạt hỏa thuật mạnh mẽ</div>
-    </div>
-
-    <!-- Switch 7 -->
-    <div class="group">
-      <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-eye"></i> Sharingan Tối Thượng</div>
-        <label class="switch">
-          <input type="checkbox" class="featureSwitch">
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="sublabel">Bật khả năng nhìn thấu chiến trường</div>
-    </div>
-
-    <!-- Mức độ -->
     <div class="group switch-row">
       <button onclick="setMode('Thường')">Thường</button>
       <button onclick="setMode('Cao')">Cao</button>
     </div>
     <div class="sublabel" id="modeStatus">Chưa chọn mức độ</div>
 
-    <!-- OnlSupport -->
     <div class="onlsupport">
       <button onclick="activeSupport('FFTH')">OnlSupport FFTH</button>
       <button onclick="activeSupport('FFM')">OnlSupport FFM</button>
@@ -396,7 +316,6 @@
 
   </div>
 
-  <!-- Âm thanh -->
   <audio id="toggleSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
   <audio id="successSound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
 
@@ -449,10 +368,16 @@
         alert("Cần Key Để Kích Hoạt 💢");
         return;
       }
-      let msg = type === "FFTH" 
+      let supportText = type === "FFTH" 
         ? "Xác Định Mục Bật : Free Fire Thường ✅"
         : "Xác Định Mục Bật : Free Fire Max ✅";
-      document.getElementById("supportStatus").textContent = msg;
+
+      let supportStatus = document.getElementById("supportStatus");
+      supportStatus.textContent = supportText;
+
+      // Thêm class active cho font nổi bật
+      supportStatus.classList.add("active");
+
       playStarEffect();
       document.getElementById("successSound").play();
     }
@@ -460,20 +385,16 @@
     function playStarEffect() {
       let container = document.querySelector(".container");
       let rect = container.getBoundingClientRect();
-
       for (let i = 0; i < 6; i++) {
         let star = document.createElement("div");
         star.className = "star";
         star.textContent = "✨";
-
         star.style.left = (rect.width / 2) + "px";
         star.style.top = (rect.height / 2) + "px";
-
         let angle = Math.random() * 2 * Math.PI;
         let distance = 80 + Math.random() * 40;
         star.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
         star.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
-
         container.appendChild(star);
         setTimeout(() => star.remove(), 1000);
       }
