@@ -16,16 +16,18 @@
       background: #f2f3f7;
     }
 
+    /* Container */
     .container {
       position: relative;
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       background: transparent;
       overflow-y: auto;
       padding: 20px;
       box-sizing: border-box;
     }
 
+    /* Video full màn hình */
     .container video {
       position: fixed;
       top: 0;
@@ -36,110 +38,116 @@
       z-index: -1;
     }
 
+    /* Header */
     .header {
       display: flex;
       align-items: center;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
       color: #333;
       margin-bottom: 15px;
       position: relative;
       z-index: 2;
-      max-width: 500px;
+      max-width: 520px;
       margin-left: auto;
       margin-right: auto;
-      padding: 15px;
+      padding: 18px;
       background: rgba(255,255,255,0.95);
-      border-radius: 15px;
+      border-radius: 18px;
     }
-
     .header img {
-      width: 22px;
-      height: 22px;
-      margin-right: 8px;
+      width: 26px;
+      height: 26px;
+      margin-right: 10px;
     }
 
+    /* Key Section */
     .key-section {
-      margin: 15px 0;
+      margin: 18px 0;
       padding: 15px;
       background: rgba(255,244,244,0.95);
       border: 1px solid #ffcccc;
       border-radius: 15px;
       position: relative;
       z-index: 2;
-      max-width: 500px;
+      max-width: 520px;
       margin-left: auto;
       margin-right: auto;
+      font-size: 16px;
     }
     .key-input-wrapper {
       display: flex;
       align-items: center;
       border: 1px solid #ccc;
       border-radius: 6px;
-      padding: 5px 8px;
+      padding: 6px 10px;
       background: #fff;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .key-input-wrapper i {
       color: #555;
-      margin-right: 6px;
-      font-size: 16px;
+      margin-right: 8px;
+      font-size: 18px;
     }
     .key-input-wrapper input {
       border: none;
       outline: none;
       flex: 1;
-      font-size: 14px;
+      font-size: 16px;
     }
     .key-section button {
-      padding: 8px 12px;
+      padding: 10px 14px;
       background: #007aff;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      font-size: 16px;
     }
     .key-result {
-      font-size: 14px;
-      margin-top: 5px;
+      font-size: 16px;
+      margin-top: 6px;
       font-weight: bold;
     }
 
+    /* Groups */
     .group {
-      margin: 18px 0;
-      padding: 15px;
-      border-radius: 15px;
+      margin: 20px 0;
+      padding: 18px;
+      border-radius: 18px;
       background: rgba(255,255,255,0.95);
       box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
       position: relative;
       z-index: 2;
-      max-width: 500px;
+      max-width: 520px;
       margin-left: auto;
       margin-right: auto;
+      font-size: 16px;
     }
 
     .label {
       display: flex;
       align-items: center;
       font-weight: bold;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: #333;
-      font-size: 15px;
+      font-size: 16px;
     }
     .label i {
-      margin-right: 8px;
+      margin-right: 10px;
       color: #007aff;
     }
     .sublabel {
-      font-size: 13px;
+      font-size: 14px;
       color: #666;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
+    /* Slider */
     input[type=range] {
       -webkit-appearance: none;
       width: 100%;
-      height: 8px;
+      height: 10px;
       border-radius: 5px;
       background: linear-gradient(to right, #007aff 50%, #d3d3d3 50%);
       outline: none;
@@ -147,8 +155,8 @@
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: #007aff;
       border: 2px solid #fff;
@@ -157,17 +165,18 @@
       box-shadow: 0 0 4px rgba(0,0,0,0.3);
     }
     .value {
-      font-size: 14px;
+      font-size: 15px;
       margin-top: 6px;
       color: #007aff;
       text-align: right;
     }
 
+    /* Switch */
     .switch {
       position: relative;
       display: inline-block;
-      width: 46px;
-      height: 24px;
+      width: 50px;
+      height: 26px;
       margin-left: auto;
     }
     .switch input {
@@ -186,8 +195,8 @@
     .slider:before {
       position: absolute;
       content: "";
-      height: 18px;
-      width: 18px;
+      height: 20px;
+      width: 20px;
       left: 3px;
       bottom: 3px;
       background-color: white;
@@ -198,7 +207,7 @@
       background-color: #007aff;
     }
     input:checked + .slider:before {
-      transform: translateX(22px);
+      transform: translateX(24px);
     }
     .switch-row {
       display: flex;
@@ -206,9 +215,10 @@
       justify-content: space-between;
     }
 
+    /* Star effect */
     .star {
       position: absolute;
-      font-size: 16px;
+      font-size: 18px;
       color: gold;
       animation: starFly 1s ease-out forwards;
       pointer-events: none;
@@ -219,35 +229,36 @@
       100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
     }
 
+    /* OnlSupport buttons */
     .onlsupport {
       display: flex;
       justify-content: space-between;
-      margin-top: 20px;
+      margin-top: 22px;
       position: relative;
       z-index: 2;
-      max-width: 500px;
+      max-width: 520px;
       margin-left: auto;
       margin-right: auto;
     }
     .onlsupport button {
       flex: 1;
       margin: 5px;
-      padding: 10px;
-      font-size: 14px;
+      padding: 12px;
+      font-size: 16px;
       font-weight: bold;
       color: white;
       background: red;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
     }
 
-    /* CSS mới cho font và màu khi bật OnlSupport */
+    /* Chữ nổi bật khi bật OnlSupport */
     #supportStatus.active {
       font-size: 18px;
       font-weight: bold;
-      color: #ff4500; /* cam nổi bật */
-      text-shadow: 0 0 6px #fff700, 0 0 10px #ff0000;
+      color: #ff4500;
+      text-shadow: 0 0 6px #fff700, 0 0 12px #ff0000;
       transition: all 0.3s ease;
     }
 
@@ -255,162 +266,225 @@
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <video autoplay loop muted playsinline>
-      <source src="https://files.catbox.moe/0besx1.mp4" type="video/mp4">
-    </video>
+  <video autoplay loop muted playsinline>
+    <source src="https://files.catbox.moe/0besx1.mp4" type="video/mp4">
+  </video>
 
-    <div class="header">
-      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712103.png" alt="logo">
-      Itachi Config iOS Framework
-    </div>
-
-    <div class="key-section">
-      <div class="key-input-wrapper">
-        <i class="fa-solid fa-key"></i>
-        <input type="text" id="keyInput" placeholder="Nhập Key để kích hoạt">
-      </div>
-      <button onclick="checkKey()">Xác Nhận Key</button>
-      <div class="key-result" id="keyResult"></div>
-    </div>
-
-    <div class="group">
-      <div class="label"><i class="fa-solid fa-arrows-up-down"></i> Độ Nhạy Drag</div>
-      <div class="sublabel">Chỉnh độ nhạy thao tác kéo</div>
-      <input type="range" min="0" max="100" value="50" class="rangeSlider">
-      <div class="value">50</div>
-    </div>
-
-    <div class="group">
-      <div class="label"><i class="fa-solid fa-crosshairs"></i> Độ Nhạy Xung Quanh</div>
-      <div class="sublabel">Săn mục tiêu xung quanh</div>
-      <input type="range" min="0" max="100" value="70" class="rangeSlider">
-      <div class="value">70</div>
-    </div>
-
-    <div class="group">
-      <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-bolt"></i> Hỗ Trợ Nâng Cao</div>
-        <label class="switch">
-          <input type="checkbox" class="featureSwitch">
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="sublabel">Bật để tăng sức mạnh cấu hình</div>
-    </div>
-
-    <!-- Switch 2 - Switch 7 + Slider các nút giữ nguyên như code gốc -->
-
-    <div class="group switch-row">
-      <button onclick="setMode('Thường')">Thường</button>
-      <button onclick="setMode('Cao')">Cao</button>
-    </div>
-    <div class="sublabel" id="modeStatus">Chưa chọn mức độ</div>
-
-    <div class="onlsupport">
-      <button onclick="activeSupport('FFTH')">OnlSupport FFTH</button>
-      <button onclick="activeSupport('FFM')">OnlSupport FFM</button>
-    </div>
-    <div class="sublabel" id="supportStatus"></div>
-
+  <div class="header">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712103.png" alt="logo">
+    Itachi Config iOS Framework
   </div>
 
-  <audio id="toggleSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
-  <audio id="successSound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+  <div class="key-section">
+    <div class="key-input-wrapper">
+      <i class="fa-solid fa-key"></i>
+      <input type="text" id="keyInput" placeholder="Nhập Key để kích hoạt">
+    </div>
+    <button onclick="checkKey()">Xác Nhận Key</button>
+    <div class="key-result" id="keyResult"></div>
+  </div>
 
-  <script>
-    let keyVerified = false;
+  <!-- Slider và Switch giữ nguyên code gốc đầy đủ -->
+  <div class="group">
+    <div class="label"><i class="fa-solid fa-arrows-up-down"></i> Độ Nhạy Drag</div>
+    <div class="sublabel">Chỉnh độ nhạy thao tác kéo</div>
+    <input type="range" min="0" max="100" value="50" class="rangeSlider">
+    <div class="value">50</div>
+  </div>
 
-    function checkKey() {
-      let key = document.getElementById("keyInput").value.trim();
-      let result = document.getElementById("keyResult");
-      if (key === "ngbaluatcheatios01") {
-        keyVerified = true;
-        result.textContent = "Xác Nhận Key Đúng ✅";
-        result.style.color = "green";
-        document.getElementById("successSound").play();
-      } else {
-        keyVerified = false;
-        result.textContent = "Key Không Tồn Tại ❌";
-        result.style.color = "red";
-      }
-    }
+  <div class="group">
+    <div class="label"><i class="fa-solid fa-crosshairs"></i> Độ Nhạy Xung Quanh</div>
+    <div class="sublabel">Săn mục tiêu xung quanh</div>
+    <input type="range" min="0" max="100" value="70" class="rangeSlider">
+    <div class="value">70</div>
+  </div>
 
-    function updateSlider(slider) {
-      let value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-      slider.style.background = `linear-gradient(to right, #007aff ${value}%, #d3d3d3 ${value}%)`;
-      slider.nextElementSibling.textContent = slider.value;
-    }
-    document.querySelectorAll(".rangeSlider").forEach(slider => {
-      updateSlider(slider);
-      slider.addEventListener("input", () => {
-        if (!keyVerified) {
-          alert("Cần Key Để Kích Hoạt 💢");
-          slider.value = 0;
-          updateSlider(slider);
-          return;
-        }
-        updateSlider(slider);
-      });
-    });
+  <div class="group">
+    <div class="switch-row">
+      <div class="label"><i class="fa-solid fa-bolt"></i> Hỗ Trợ Nâng Cao</div>
+      <label class="switch">
+        <input type="checkbox" class="featureSwitch">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="sublabel">Bật để tăng sức mạnh cấu hình</div>
+  </div>
 
-    function setMode(mode) {
-      if (!keyVerified) {
-        alert("Cần Key Để Kích Hoạt 💢");
-        return;
-      }
-      document.getElementById("modeStatus").textContent = "Đã chọn: " + mode;
-    }
+  <div class="group">
+    <div class="switch-row">
+      <div class="label"><i class="fa-solid fa-shield"></i> Chống Giật Lag</div>
+      <label class="switch">
+        <input type="checkbox" class="featureSwitch">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="sublabel">Ổn định FPS khi chơi</div>
+  </div>
 
-    function activeSupport(type) {
-      if (!keyVerified) {
-        alert("Cần Key Để Kích Hoạt 💢");
-        return;
-      }
-      let supportText = type === "FFTH" 
-        ? "Xác Định Mục Bật : Free Fire Thường ✅"
-        : "Xác Định Mục Bật : Free Fire Max ✅";
+  <div class="group">
+    <div class="switch-row">
+      <div class="label"><i class="fa-solid fa-bullseye"></i> Aim Chuẩn Xác</div>
+      <label class="switch">
+        <input type="checkbox" class="featureSwitch">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="sublabel">Hỗ trợ ngắm bắn tự động</div>
+  </div>
 
-      let supportStatus = document.getElementById("supportStatus");
-      supportStatus.textContent = supportText;
+  <div class="group">
+    <div class="switch-row">
+      <div class="label"><i class="fa-solid fa-wifi"></i> Tối Ưu Ping</div>
+      <label class="switch">
+        <input type="checkbox" class="featureSwitch">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="sublabel">Giảm ping khi mạng yếu</div>
+  </div>
 
-      // Thêm class active cho font nổi bật
-      supportStatus.classList.add("active");
+  <div class="group">
+    <div class="switch-row">
+      <div class="label"><i class="fa-solid fa-dragon"></i> Kích Hoạt Sức Mạnh Itachi</div>
+      <label class="switch">
+        <input type="checkbox" class="featureSwitch">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="sublabel">Giải phóng sức mạnh Uchiha ẩn giấu</div>
+  </div>
 
-      playStarEffect();
+  <div class="group">
+    <div class="switch-row">
+      <div class="label"><i class="fa-solid fa-fire"></i> Chế Độ Hoả Thuật</div>
+      <label class="switch">
+        <input type="checkbox" class="featureSwitch">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="sublabel">Kích hoạt hỏa thuật mạnh mẽ</div>
+  </div>
+
+  <div class="group">
+    <div class="switch-row">
+      <div class="label"><i class="fa-solid fa-eye"></i> Sharingan Tối Thượng</div>
+      <label class="switch">
+        <input type="checkbox" class="featureSwitch">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="sublabel">Bật khả năng nhìn thấu chiến trường</div>
+  </div>
+
+  <div class="group switch-row">
+    <button onclick="setMode('Thường')">Thường</button>
+    <button onclick="setMode('Cao')">Cao</button>
+  </div>
+  <div class="sublabel" id="modeStatus">Chưa chọn mức độ</div>
+
+  <div class="onlsupport">
+    <button onclick="activeSupport('FFTH')">OnlSupport FFTH</button>
+    <button onclick="activeSupport('FFM')">OnlSupport FFM</button>
+  </div>
+  <div class="sublabel" id="supportStatus"></div>
+
+</div>
+
+<audio id="toggleSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+<audio id="successSound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+
+<script>
+  let keyVerified = false;
+
+  function checkKey() {
+    let key = document.getElementById("keyInput").value.trim();
+    let result = document.getElementById("keyResult");
+    if (key === "ngbaluatcheatios01") {
+      keyVerified = true;
+      result.textContent = "Xác Nhận Key Đúng ✅";
+      result.style.color = "green";
       document.getElementById("successSound").play();
+    } else {
+      keyVerified = false;
+      result.textContent = "Key Không Tồn Tại ❌";
+      result.style.color = "red";
     }
+  }
 
-    function playStarEffect() {
-      let container = document.querySelector(".container");
-      let rect = container.getBoundingClientRect();
-      for (let i = 0; i < 6; i++) {
-        let star = document.createElement("div");
-        star.className = "star";
-        star.textContent = "✨";
-        star.style.left = (rect.width / 2) + "px";
-        star.style.top = (rect.height / 2) + "px";
-        let angle = Math.random() * 2 * Math.PI;
-        let distance = 80 + Math.random() * 40;
-        star.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
-        star.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
-        container.appendChild(star);
-        setTimeout(() => star.remove(), 1000);
+  function updateSlider(slider) {
+    let value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+    slider.style.background = `linear-gradient(to right, #007aff ${value}%, #d3d3d3 ${value}%)`;
+    slider.nextElementSibling.textContent = slider.value;
+  }
+  document.querySelectorAll(".rangeSlider").forEach(slider => {
+    updateSlider(slider);
+    slider.addEventListener("input", () => {
+      if (!keyVerified) {
+        alert("Cần Key Để Kích Hoạt 💢");
+        slider.value = 0;
+        updateSlider(slider);
+        return;
       }
-    }
-
-    document.querySelectorAll(".featureSwitch").forEach(sw => {
-      sw.addEventListener("change", function() {
-        if (!keyVerified) {
-          alert("Cần Key Để Kích Hoạt 💢");
-          this.checked = false;
-          return;
-        }
-        document.getElementById("toggleSound").play();
-        playStarEffect();
-      });
+      updateSlider(slider);
     });
-  </script>
+  });
+
+  function setMode(mode) {
+    if (!keyVerified) {
+      alert("Cần Key Để Kích Hoạt 💢");
+      return;
+    }
+    document.getElementById("modeStatus").textContent = "Đã chọn: " + mode;
+  }
+
+  function activeSupport(type) {
+    if (!keyVerified) {
+      alert("Cần Key Để Kích Hoạt 💢");
+      return;
+    }
+    let supportText = type === "FFTH" 
+      ? "Xác Định Mục Bật : Free Fire Thường ✅"
+      : "Xác Định Mục Bật : Free Fire Max ✅";
+
+    let supportStatus = document.getElementById("supportStatus");
+    supportStatus.textContent = supportText;
+    supportStatus.classList.add("active"); // chữ nổi bật khi bật
+
+    playStarEffect();
+    document.getElementById("successSound").play();
+  }
+
+  function playStarEffect() {
+    let container = document.querySelector(".container");
+    let rect = container.getBoundingClientRect();
+    for (let i = 0; i < 6; i++) {
+      let star = document.createElement("div");
+      star.className = "star";
+      star.textContent = "✨";
+      star.style.left = (rect.width / 2) + "px";
+      star.style.top = (rect.height / 2) + "px";
+      let angle = Math.random() * 2 * Math.PI;
+      let distance = 80 + Math.random() * 40;
+      star.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
+      star.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
+      container.appendChild(star);
+      setTimeout(() => star.remove(), 1000);
+    }
+  }
+
+  document.querySelectorAll(".featureSwitch").forEach(sw => {
+    sw.addEventListener("change", function() {
+      if (!keyVerified) {
+        alert("Cần Key Để Kích Hoạt 💢");
+        this.checked = false;
+        return;
+      }
+      document.getElementById("toggleSound").play();
+      playStarEffect();
+    });
+  });
+</script>
 </body>
 </html>
