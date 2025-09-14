@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Itachi Config iOS Framework</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f3f7;
+      margin: 0;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header img {
+      width: 22px;
+      height: 22px;
+      margin-right: 8px;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: auto;
+      background: transparent; /* Bỏ mờ, để video rõ */
+      padding: 18px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Video nằm dưới container */
+    .container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* luôn nằm dưới các chức năng */
+      border-radius: 15px;
+    }
+
+    .group {
+      margin: 18px 0;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.95); /* gần như trắng, video hiện rõ */
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+      position: relative;
+      z-index: 2;
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+      font-size: 15px;
+    }
+
+    .label i {
+      margin-right: 8px;
+      color: #007aff;
+    }
+
+    .sublabel {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    /* Slider */
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: linear-gradient(to right, #007aff 50%, #d3d3d3 50%);
+      outline: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #007aff;
+      border: 2px solid #fff;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+    }
+
+    .value {
+      font-size: 14px;
+      margin-top: 6px;
+      color: #007aff;
+      text-align: right;
+    }
+
+    /* iOS switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 24px;
+      margin-left: auto;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #007aff;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+
+    .switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Star effect */
+    .star {
+      position: absolute;
+      font-size: 16px;
+      color: gold;
+      animation: starFly 1s ease-out forwards;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    @keyframes starFly {
+      0% { transform: translate(0,0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
+    }
+
+    /* OnlSupport */
+    .onlsupport {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .onlsupport button {
+      flex: 1;
+      margin: 5px;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      background: red;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Key input */
+    .key-section {
+      margin: 15px 0;
+      padding: 10px;
+      background: rgba(255,244,244,0.95);
+      border: 1px solid #ffcccc;
+      border-radius: 10px;
+      position: relative;
+      z-index: 2;
+    }
+    .key-input-wrapper {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 5px 8px;
+      background: #fff;
+      margin-bottom: 8px;
+    }
+    .key-input-wrapper i {
+      color: #555;
+      margin-right: 6px;
+      font-size: 16px;
+    }
+    .key-input-wrapper input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 14px;
+    }
+    .key-section button {
+      padding: 8px 12px;
+      background: #007aff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .key-result {
+      font-size: 14px;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Video gọn trong container -->
+    <video autoplay loop muted playsinline>
+      <source src="https://files.catbox.moe/0besx1.mp4" type="video/mp4">
+    </video>
+
+    <!-- Header -->
+    <div class="header">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712103.png" alt="logo">
+      Itachi Config iOS Framework
+    </div>
+
+    <!-- Key Section -->
+    <div class="key-section">
+      <div class="key-input-wrapper">
+        <i class="fa-solid fa-key"></i>
+        <input type="text" id="keyInput" placeholder="Nhập Key để kích hoạt">
+      </div>
+      <button onclick="checkKey()">Xác Nhận Key</button>
+      <div class="key-result" id="keyResult"></div>
+    </div>
+
+    <!-- Slider 1 -->
+    <div class="group">
+      <div class="label"><i class="fa-solid fa-arrows-up-down"></i> Độ Nhạy Drag</div>
+      <div class="sublabel">Chỉnh độ nhạy thao tác kéo</div>
+      <input type="range" min="0" max="100" value="50" class="rangeSlider">
+      <div class="value">50</div>
+    </div>
+
+    <!-- Slider 2 -->
+    <div class="group">
+      <div class="label"><i class="fa-solid fa-crosshairs"></i> Độ Nhạy Xung Quanh</div>
+      <div class="sublabel">Săn mục tiêu xung quanh</div>
+      <input type="range" min="0" max="100" value="70" class="rangeSlider">
+      <div class="value">70</div>
+    </div>
+
+    <!-- Switch 1 -->
+    <div class="group">
+      <div class="switch-row">
+        <div class="label"><i class="fa-solid fa-bolt"></i> Hỗ Trợ Nâng Cao</div>
+        <label class="switch">
+          <input type="checkbox" class="featureSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="sublabel">Bật để tăng sức mạnh cấu hình</div>
+    </div>
+
+    <!-- Switch 2 -->
+    <div class="group">
+      <div class="switch-row">
+        <div class="label"><i class="fa-solid fa-shield"></i> Chống Giật Lag</div>
+        <label class="switch">
+          <input type="checkbox" class="featureSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="sublabel">Ổn định FPS khi chơi</div>
+    </div>
+
+    <!-- Switch 3 -->
+    <div class="group">
+      <div class="switch-row">
+        <div class="label"><i class="fa-solid fa-bullseye"></i> Aim Chuẩn Xác</div>
+        <label class="switch">
+          <input type="checkbox" class="featureSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="sublabel">Hỗ trợ ngắm bắn tự động</div>
+    </div>
+
+    <!-- Switch 4 -->
+    <div class="group">
+      <div class="switch-row">
+        <div class="label"><i class="fa-solid fa-wifi"></i> Tối Ưu Ping</div>
+        <label class="switch">
+          <input type="checkbox" class="featureSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="sublabel">Giảm ping khi mạng yếu</div>
+    </div>
+
+    <!-- Switch 5 -->
+    <div class="group">
+      <div class="switch-row">
+        <div class="label"><i class="fa-solid fa-dragon"></i> Kích Hoạt Sức Mạnh Itachi</div>
+        <label class="switch">
+          <input type="checkbox" class="featureSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="sublabel">Giải phóng sức mạnh Uchiha ẩn giấu</div>
+    </div>
+
+    <!-- Switch 6 -->
+    <div class="group">
+      <div class="switch-row">
+        <div class="label"><i class="fa-solid fa-fire"></i> Chế Độ Hoả Thuật</div>
+        <label class="switch">
+          <input type="checkbox" class="featureSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="sublabel">Kích hoạt hỏa thuật mạnh mẽ</div>
+    </div>
+
+    <!-- Switch 7 -->
+    <div class="group">
+      <div class="switch-row">
+        <div class="label"><i class="fa-solid fa-eye"></i> Sharingan Tối Thượng</div>
+        <label class="switch">
+          <input type="checkbox" class="featureSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="sublabel">Bật khả năng nhìn thấu chiến trường</div>
+    </div>
+
+    <!-- Mức độ -->
+    <div class="group switch-row">
+      <button onclick="setMode('Thường')">Thường</button>
+      <button onclick="setMode('Cao')">Cao</button>
+    </div>
+    <div class="sublabel" id="modeStatus">Chưa chọn mức độ</div>
+
+    <!-- OnlSupport -->
+    <div class="onlsupport">
+      <button onclick="activeSupport('FFTH')">OnlSupport FFTH</button>
+      <button onclick="activeSupport('FFM')">OnlSupport FFM</button>
+    </div>
+    <div class="sublabel" id="supportStatus"></div>
+
+  </div>
+
+  <!-- Âm thanh -->
+  <audio id="toggleSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+  <audio id="successSound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+
+  <script>
+    let keyVerified = false;
+
+    // Check key
+    function checkKey() {
+      let key = document.getElementById("keyInput").value.trim();
+      let result = document.getElementById("keyResult");
+      if (key === "ngbaluatcheatios01") {
+        keyVerified = true;
+        result.textContent = "Xác Nhận Key Đúng ✅";
+        result.style.color = "green";
+        document.getElementById("successSound").play();
+      } else {
+        keyVerified = false;
+        result.textContent = "Key Không Tồn Tại ❌";
+        result.style.color = "red";
+      }
+    }
+
+    // Slider update
+    function updateSlider(slider) {
+      let value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+      slider.style.background = `linear-gradient(to right, #007aff ${value}%, #d3d3d3 ${value}%)`;
+      slider.nextElementSibling.textContent = slider.value;
+    }
+    document.querySelectorAll(".rangeSlider").forEach(slider => {
+      updateSlider(slider);
+      slider.addEventListener("input", () => {
+        if (!keyVerified) {
+          alert("Cần Key Để Kích Hoạt 💢");
+          slider.value = 0;
+          updateSlider(slider);
+          return;
+        }
+        updateSlider(slider);
+      });
+    });
+
+    // Mode
+    function setMode(mode) {
+      if (!keyVerified) {
+        alert("Cần Key Để Kích Hoạt 💢");
+        return;
+      }
+      document.getElementById("modeStatus").textContent = "Đã chọn: " + mode;
+    }
+
+    // OnlSupport
+    function activeSupport(type) {
+      if (!keyVerified) {
+        alert("Cần Key Để Kích Hoạt 💢");
+        return;
+      }
+      let msg = type === "FFTH" 
+        ? "Xác Định Mục Bật : Free Fire Thường ✅"
+        : "Xác Định Mục Bật : Free Fire Max ✅";
+      document.getElementById("supportStatus").textContent = msg;
+      playStarEffect();
+      document.getElementById("successSound").play();
+    }
+
+    // Hiệu ứng sao
+    function playStarEffect() {
+      let container = document.querySelector(".container");
+      let rect = container.getBoundingClientRect();
+
+      for (let i = 0; i < 6; i++) {
+        let star = document.createElement("div");
+        star.className = "star";
+        star.textContent = "✨";
+
+        star.style.left = (rect.width / 2) + "px";
+        star.style.top = (rect.height / 2) + "px";
+
+        let angle = Math.random() * 2 * Math.PI;
+        let distance = 80 + Math.random() * 40;
+        star.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
+        star.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
+
+        container.appendChild(star);
+        setTimeout(() => star.remove(), 1000);
+      }
+    }
+
+    // Switch bật tắt
+    document.querySelectorAll(".featureSwitch").forEach(sw => {
+      sw.addEventListener("change", function() {
+        if (!keyVerified) {
+          alert("Cần Key Để Kích Hoạt 💢");
+          this.checked = false;
+          return;
+        }
+        document.getElementById("toggleSound").play();
+        playStarEffect();
+      });
+    });
+  </script>
+</body>
+</html>
