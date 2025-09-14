@@ -6,27 +6,31 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    html, body {
+    /* BODY */
+    body {
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
       overflow: hidden;
-      font-family: Arial, sans-serif;
+      height: 100vh;
+      width: 100vw;
+      background: #f2f3f7;
     }
 
-    /* Container full màn hình */
+    /* Container full màn hình, scroll nếu nội dung cao */
     .container {
       position: relative;
       width: 100vw;
       height: 100vh;
       background: transparent;
-      overflow: hidden;
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
-    /* Video full màn hình */
+    /* Video nền full màn hình */
     .container video {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -45,7 +49,12 @@
       margin-bottom: 15px;
       position: relative;
       z-index: 2;
-      padding: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 15px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 15px;
     }
 
     .header img {
@@ -54,14 +63,65 @@
       margin-right: 8px;
     }
 
-    .group, .key-section, .onlsupport {
+    /* Key Section */
+    .key-section {
+      margin: 15px 0;
+      padding: 15px;
+      background: rgba(255,244,244,0.95);
+      border: 1px solid #ffcccc;
+      border-radius: 15px;
       position: relative;
       z-index: 2;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .key-input-wrapper {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 5px 8px;
+      background: #fff;
+      margin-bottom: 8px;
+    }
+    .key-input-wrapper i {
+      color: #555;
+      margin-right: 6px;
+      font-size: 16px;
+    }
+    .key-input-wrapper input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 14px;
+    }
+    .key-section button {
+      padding: 8px 12px;
+      background: #007aff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .key-result {
+      font-size: 14px;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+
+    /* Group (sliders + switches) */
+    .group {
+      margin: 18px 0;
+      padding: 15px;
+      border-radius: 15px;
       background: rgba(255,255,255,0.95);
-      margin: 12px 20px;
-      padding: 12px;
-      border-radius: 12px;
       box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+      position: relative;
+      z-index: 2;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .label {
@@ -72,12 +132,10 @@
       color: #333;
       font-size: 15px;
     }
-
     .label i {
       margin-right: 8px;
       color: #007aff;
     }
-
     .sublabel {
       font-size: 13px;
       color: #666;
@@ -93,7 +151,6 @@
       background: linear-gradient(to right, #007aff 50%, #d3d3d3 50%);
       outline: none;
     }
-
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
@@ -106,7 +163,6 @@
       transition: 0.2s;
       box-shadow: 0 0 4px rgba(0,0,0,0.3);
     }
-
     .value {
       font-size: 14px;
       margin-top: 6px;
@@ -122,13 +178,11 @@
       height: 24px;
       margin-left: auto;
     }
-
     .switch input {
       opacity: 0;
       width: 0;
       height: 0;
     }
-
     .slider {
       position: absolute;
       cursor: pointer;
@@ -137,7 +191,6 @@
       transition: 0.3s;
       border-radius: 24px;
     }
-
     .slider:before {
       position: absolute;
       content: "";
@@ -149,15 +202,12 @@
       transition: 0.3s;
       border-radius: 50%;
     }
-
     input:checked + .slider {
       background-color: #007aff;
     }
-
     input:checked + .slider:before {
       transform: translateX(22px);
     }
-
     .switch-row {
       display: flex;
       align-items: center;
@@ -173,52 +223,22 @@
       pointer-events: none;
       z-index: 3;
     }
-
     @keyframes starFly {
       0% { transform: translate(0,0) scale(1); opacity: 1; }
       100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
     }
 
-    /* Key input */
-    .key-section .key-input-wrapper {
+    /* OnlSupport */
+    .onlsupport {
       display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 5px 8px;
-      background: #fff;
-      margin-bottom: 8px;
+      justify-content: space-between;
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    .key-section .key-input-wrapper i {
-      color: #555;
-      margin-right: 6px;
-      font-size: 16px;
-    }
-
-    .key-section .key-input-wrapper input {
-      border: none;
-      outline: none;
-      flex: 1;
-      font-size: 14px;
-    }
-
-    .key-section button {
-      padding: 8px 12px;
-      background: #007aff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .key-result {
-      font-size: 14px;
-      margin-top: 5px;
-      font-weight: bold;
-    }
-
-    /* OnlSupport buttons */
     .onlsupport button {
       flex: 1;
       margin: 5px;
@@ -236,9 +256,10 @@
 </head>
 <body>
 
+  <!-- Container -->
   <div class="container">
 
-    <!-- Video nền -->
+    <!-- Video gọn trong container -->
     <video autoplay loop muted playsinline>
       <source src="https://files.catbox.moe/0besx1.mp4" type="video/mp4">
     </video>
@@ -261,7 +282,7 @@
 
     <!-- Slider 1 -->
     <div class="group">
-      <div class="label"><i class="fa-solid fa-arrows-up-down"></i> System Drag Up</div>
+      <div class="label"><i class="fa-solid fa-arrows-up-down"></i> Độ Nhạy Drag</div>
       <div class="sublabel">Chỉnh độ nhạy thao tác kéo</div>
       <input type="range" min="0" max="100" value="50" class="rangeSlider">
       <div class="value">50</div>
@@ -269,7 +290,7 @@
 
     <!-- Slider 2 -->
     <div class="group">
-      <div class="label"><i class="fa-solid fa-crosshairs"></i> Hạn Chế Drop Fps </div>
+      <div class="label"><i class="fa-solid fa-crosshairs"></i> Độ Nhạy Xung Quanh</div>
       <div class="sublabel">Săn mục tiêu xung quanh</div>
       <input type="range" min="0" max="100" value="70" class="rangeSlider">
       <div class="value">70</div>
@@ -278,19 +299,19 @@
     <!-- Switch 1 -->
     <div class="group">
       <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-bolt"></i> Electric Wifi Onl</div>
+        <div class="label"><i class="fa-solid fa-bolt"></i> Hỗ Trợ Nâng Cao</div>
         <label class="switch">
           <input type="checkbox" class="featureSwitch">
           <span class="slider"></span>
         </label>
       </div>
-      <div class="sublabel">Giảm Độ Trễ Khi Kéo</div>
+      <div class="sublabel">Bật để tăng sức mạnh cấu hình</div>
     </div>
 
     <!-- Switch 2 -->
     <div class="group">
       <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-shield"></i> Fix Giật Lag All</div>
+        <div class="label"><i class="fa-solid fa-shield"></i> Chống Giật Lag</div>
         <label class="switch">
           <input type="checkbox" class="featureSwitch">
           <span class="slider"></span>
@@ -302,61 +323,61 @@
     <!-- Switch 3 -->
     <div class="group">
       <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-bullseye"></i> Aimlock Cpu</div>
+        <div class="label"><i class="fa-solid fa-bullseye"></i> Aim Chuẩn Xác</div>
         <label class="switch">
           <input type="checkbox" class="featureSwitch">
           <span class="slider"></span>
         </label>
       </div>
-      <div class="sublabel">Giảm Nóng Cải Thiện Tâm Súng</div>
+      <div class="sublabel">Hỗ trợ ngắm bắn tự động</div>
     </div>
 
     <!-- Switch 4 -->
     <div class="group">
       <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-wifi"></i> Wifi Bosster</div>
+        <div class="label"><i class="fa-solid fa-wifi"></i> Tối Ưu Ping</div>
         <label class="switch">
           <input type="checkbox" class="featureSwitch">
           <span class="slider"></span>
         </label>
       </div>
-      <div class="sublabel">Tối Ưu Wifi Tốc Độ Cao</div>
+      <div class="sublabel">Giảm ping khi mạng yếu</div>
     </div>
 
     <!-- Switch 5 -->
     <div class="group">
       <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-dragon"></i> Fix Tremble</div>
+        <div class="label"><i class="fa-solid fa-dragon"></i> Kích Hoạt Sức Mạnh Itachi</div>
         <label class="switch">
           <input type="checkbox" class="featureSwitch">
           <span class="slider"></span>
         </label>
       </div>
-      <div class="sublabel">Fix Lố Đầu</div>
+      <div class="sublabel">Giải phóng sức mạnh Uchiha ẩn giấu</div>
     </div>
 
     <!-- Switch 6 -->
     <div class="group">
       <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-fire"></i> HexConfig</div>
+        <div class="label"><i class="fa-solid fa-fire"></i> Chế Độ Hoả Thuật</div>
         <label class="switch">
           <input type="checkbox" class="featureSwitch">
           <span class="slider"></span>
         </label>
       </div>
-      <div class="sublabel">Giảm Tình Trạng Rung Tâm</div>
+      <div class="sublabel">Kích hoạt hỏa thuật mạnh mẽ</div>
     </div>
 
     <!-- Switch 7 -->
     <div class="group">
       <div class="switch-row">
-        <div class="label"><i class="fa-solid fa-eye"></i> Headlock</div>
+        <div class="label"><i class="fa-solid fa-eye"></i> Sharingan Tối Thượng</div>
         <label class="switch">
           <input type="checkbox" class="featureSwitch">
           <span class="slider"></span>
         </label>
       </div>
-      <div class="sublabel">Tốc Độ Kéo Cao - Bám Đầu</div>
+      <div class="sublabel">Bật khả năng nhìn thấu chiến trường</div>
     </div>
 
     <!-- Mức độ -->
@@ -382,7 +403,6 @@
   <script>
     let keyVerified = false;
 
-    // Check key
     function checkKey() {
       let key = document.getElementById("keyInput").value.trim();
       let result = document.getElementById("keyResult");
@@ -398,7 +418,6 @@
       }
     }
 
-    // Slider update
     function updateSlider(slider) {
       let value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
       slider.style.background = `linear-gradient(to right, #007aff ${value}%, #d3d3d3 ${value}%)`;
@@ -417,7 +436,6 @@
       });
     });
 
-    // Mode
     function setMode(mode) {
       if (!keyVerified) {
         alert("Cần Key Để Kích Hoạt 💢");
@@ -426,7 +444,6 @@
       document.getElementById("modeStatus").textContent = "Đã chọn: " + mode;
     }
 
-    // OnlSupport
     function activeSupport(type) {
       if (!keyVerified) {
         alert("Cần Key Để Kích Hoạt 💢");
@@ -440,7 +457,6 @@
       document.getElementById("successSound").play();
     }
 
-    // Hiệu ứng sao
     function playStarEffect() {
       let container = document.querySelector(".container");
       let rect = container.getBoundingClientRect();
@@ -463,7 +479,6 @@
       }
     }
 
-    // Switch bật tắt
     document.querySelectorAll(".featureSwitch").forEach(sw => {
       sw.addEventListener("change", function() {
         if (!keyVerified) {
